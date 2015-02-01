@@ -1,4 +1,4 @@
-package studentinfo;
+package sis.studentinfo;
 
 public class Student {
 	private String name;
@@ -7,10 +7,10 @@ public class Student {
 		this.name = name ;
 	}
 	
-	String getName(){
+	public String getName(){
 		return this.name;
 	}
-	void setName(String name){
+	public void setName(String name){
 		this.name = name;
 	}
 }

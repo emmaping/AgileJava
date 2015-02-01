@@ -1,4 +1,4 @@
-package studentinfo;
+package sis.studentinfo;
 import java.util.List;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -14,6 +14,9 @@ public class CourseSession {
 	private String number;
 	private List<Student> allStudents = new ArrayList<>();
 	private LocalDate startDate;
+	public final static String ROSTER_REPORT_HEADER = "I am header";
+	public final static String ROSTER_REPORT_FOOTER = "I'm footer";
+	public final static String NEWLINE = System.getProperty("line.separator");
 	
 	public CourseSession(String department, String number) {
 		this.department = department;
@@ -46,17 +49,19 @@ public class CourseSession {
 		this.number = number;
 	}
 	
-	int getNumberOfStudents(){
+	public int getNumberOfStudents(){
 		return allStudents.size();
 	}
 	
-	void enroll(Student student){
+	public void enroll(Student student){
 		allStudents.add(student);
 	}
 	
-	Student get(int index){
+	public Student get(int index){
 		return allStudents.get(index);
 	}
+	
+
 	/**
 	 * 
 	 * @return Date the last date of the course session
@@ -65,5 +70,6 @@ public class CourseSession {
 		return startDate.withMonth((startDate.getMonthValue() + 5) % 12);
 	}
 	
+
 
 }

@@ -1,4 +1,4 @@
-package studentinfo;
+package sis.studentinfo;
 import static org.junit.Assert.*;
 
 import java.time.LocalDate;
@@ -6,6 +6,9 @@ import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import sis.studentinfo.CourseSession;
+import sis.studentinfo.Student;
 
 
 public class CourseSessionTest {
@@ -46,5 +49,7 @@ public class CourseSessionTest {
 		LocalDate endDate = LocalDate.of(2014, 6, 6);
 		assertEquals(endDate, sessionWithDateCourseSession.getEndDate());
 	}
+	
+
 
 }
