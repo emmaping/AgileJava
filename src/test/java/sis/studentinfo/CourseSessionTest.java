@@ -15,15 +15,19 @@ public class CourseSessionTest {
 	private CourseSession session;
 	@Before
 	public void setUp() {
-		session = new CourseSession("ENGL","101");
+		session = CourseSession.create("ENGL","101");
 	}
 
 	@Test
-	public void testCreate() {
-		
+	public void testCreate() {		
 		assertEquals("ENGL", session.getDepartment());
 		assertEquals("101", session.getNumber());
 		assertEquals(0, session.getNumberOfStudents());
+	}
+	@Test
+	public void testCreateCourseSession(){
+		assertEquals("ENGL", session.getDepartment());
+		assertEquals("101", session.getNumber());
 	}
 	
 	@Test

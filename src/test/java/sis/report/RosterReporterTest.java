@@ -8,12 +8,13 @@ import org.junit.Test;
 import sis.report.RosterReporter;
 import sis.studentinfo.CourseSession;
 import sis.studentinfo.Student;
+import static sis.report.ReportConstant.NEWLINE;
 
 public class RosterReporterTest {
 	private RosterReporter rosterReporter;
 	@Before
 	public void setUp() throws Exception {
-		CourseSession session = new CourseSession("ENGL","101");
+		CourseSession session = CourseSession.create("ENGL","101");
 		session.enroll(new Student("A"));
 		session.enroll(new Student("B"));
 		rosterReporter = new RosterReporter(session);
@@ -25,9 +26,9 @@ public class RosterReporterTest {
 		System.out.println(rosterReporter.getReport());
 
 		assertEquals(CourseSession.ROSTER_REPORT_HEADER +
-						"A" + CourseSession.NEWLINE +
-						"B" + CourseSession.NEWLINE +
+						"A" + NEWLINE +
+						"B" + NEWLINE +
 						CourseSession.ROSTER_REPORT_FOOTER +
-						"2" + CourseSession.NEWLINE,  rosterReporter.getReport());
+						"2" + NEWLINE,  rosterReporter.getReport());
 	}
 }

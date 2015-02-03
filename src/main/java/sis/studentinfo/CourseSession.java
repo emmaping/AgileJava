@@ -3,6 +3,7 @@ import java.util.List;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+
 /**
  * Provides a representation of a single-semester
  * session of a specific university course
@@ -16,11 +17,19 @@ public class CourseSession {
 	private LocalDate startDate;
 	public final static String ROSTER_REPORT_HEADER = "I am header";
 	public final static String ROSTER_REPORT_FOOTER = "I'm footer";
-	public final static String NEWLINE = System.getProperty("line.separator");
 	
-	public CourseSession(String department, String number) {
+	private CourseSession(String department, String number) {
 		this.department = department;
 		this.number = number;
+	}
+	
+	private CourseSession createCourseSession(){
+		return CourseSession.create("ENGL", "101");
+	}
+	
+	public static CourseSession create(String department, String number){
+		return new CourseSession(department, number);
+		
 	}
 	/**
 	 * Constructs a CourseSession starting on a specific date

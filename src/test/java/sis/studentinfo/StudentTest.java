@@ -26,6 +26,32 @@ public class StudentTest{
 		firStudent.setName(secStudentNameString);
 		assertEquals(secStudentNameString, firStudent.getName());
 	}
+	@Test
+	public void testFullTime(){
+		Student student = new Student("a");
+		assertFalse(student.isFullTime());
+		student.addCredits(12);
+		assertTrue(student.isFullTime());
+	}
 	
+	@Test
+	public void testCredits(){
+		Student student = new Student("a");
+		assertEquals(0, student.getCredits());
+		student.addCredits(3);
+		assertEquals(3, student.getCredits());
+		student.addCredits(4);
+		assertEquals(7, student.getCredits());
+	}
+	
+	@Test
+	public void testInState(){
+		Student student = new Student("b");
+		assertFalse(student.isInState());
+		student.setState(Student.IN_STATE);
+		assertTrue(student.isInState());
+		student.setState("MD");
+		assertFalse(student.isInState());
+	}
 
 }

@@ -1,6 +1,7 @@
 package sis.report;
 
 import sis.studentinfo.CourseSession;
+import static sis.report.ReportConstant.NEWLINE;
 import sis.studentinfo.Student;
 
 public class RosterReporter {
@@ -26,12 +27,12 @@ public class RosterReporter {
 		for (int i=0; i<size; i++){
 			Student student = session.get(i);
 			builder.append(student.getName());
-			builder.append(CourseSession.NEWLINE);
+			builder.append(NEWLINE);
 		}
 	}
 	
 	void writeFooter(StringBuilder builder){
-		builder.append(CourseSession.ROSTER_REPORT_FOOTER + session.getNumberOfStudents() + CourseSession.NEWLINE);
+		builder.append(CourseSession.ROSTER_REPORT_FOOTER + session.getNumberOfStudents() + NEWLINE);
 	}
 
 }
