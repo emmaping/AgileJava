@@ -2,6 +2,7 @@ package sis.studentinfo;
 import java.util.List;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.function.IntToLongFunction;
 
 
 /**
@@ -10,7 +11,7 @@ import java.util.ArrayList;
  * @author Emma_Ping
  *
  */
-public class CourseSession {
+public class CourseSession implements Comparable<CourseSession>{
 	private String department;
 	private String number;
 	private List<Student> allStudents = new ArrayList<>();
@@ -79,6 +80,10 @@ public class CourseSession {
 		return startDate.withMonth((startDate.getMonthValue() + 5) % 12);
 	}
 	
+	@Override
+	public int compareTo(CourseSession that){
+		return this.getDepartment().compareTo(that.getDepartment());
+	}
 
 
 }

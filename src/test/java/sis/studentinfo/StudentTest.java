@@ -10,6 +10,7 @@ import sis.studentinfo.Student;
 public class StudentTest{
 	final String firStudentNameString = "Jane Doe";
 	final String secStudentNameString = "Joe Doe";
+	private static final double GRADE_TOLERANCE = 0.05;
 	@Test
 	public void testCreate(){	
 		Student firStudent = new Student(firStudentNameString);
@@ -53,5 +54,40 @@ public class StudentTest{
 		student.setState("MD");
 		assertFalse(student.isInState());
 	}
-
+	
+	@Test
+	public void testRegularGradingStrategy(){
+		Student student = new Student("a");
+		student.setGradingStrategy(new RegularGradingStrategy());
+		assertGpa(student, 0.0);
+		student.addGrade(Student.Grade.A);
+		assertGpa(student, 4.0);
+		student.addGrade(Student.Grade.B);
+		assertGpa(student, 3.5);
+		student.addGrade(Student.Grade.C);
+		assertGpa(student, 3.0);
+		student.addGrade(Student.Grade.D);
+		assertGpa(student, 2.5);
+		student.addGrade(Student.Grade.F);
+		assertGpa(student, 2.0);
+	}
+	@Test
+	public void HonorsGradingStrategy(){
+		Student student = new Student("b");
+		student.setGradingStrategy(new HonorsGradingStrategy());
+		assertGpa(student, 0.0);
+		student.addGrade(Student.Grade.A);
+		assertGpa(student, 4.0);;
+		student.addGrade(Student.Grade.B);
+		assertGpa(student, 3.5);;
+		student.addGrade(Student.Grade.C);
+		assertGpa(student, 3.0);;
+		student.addGrade(Student.Grade.D);
+		assertGpa(student, 2.5);;
+		student.addGrade(Student.Grade.F);
+		assertGpa(student, 2.0);;
+	}
+	private void assertGpa(Student student, double expectedGpa){
+		assertEquals(expectedGpa, student.getGpa(), GRADE_TOLERANCE);
+	}
 }
