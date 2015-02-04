@@ -11,10 +11,24 @@ public class Student {
 	static final String IN_STATE = "OR";
 	private List<Grade> grades = new ArrayList<>();
 	private GradingStrategy gradingStrategy;
-	enum Grade {A,B,C,D,F};
+	public static enum Grade {
+		A(4),
+		B(3),
+		C(2),
+		D(1),
+		F(0);
+		private int points;
+		private Grade(int points) {
+			this.points = points;
+		}
+		int getPoints(){
+			return points;
+		}
+	};
 	
 	public Student(String name){
 		this.name = name ;
+		this.gradingStrategy = new BasicGradingStrategy();
 	}
 	
 	public String getName(){

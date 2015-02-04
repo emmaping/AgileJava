@@ -11,6 +11,7 @@ public class StudentTest{
 	final String firStudentNameString = "Jane Doe";
 	final String secStudentNameString = "Joe Doe";
 	private static final double GRADE_TOLERANCE = 0.05;
+
 	@Test
 	public void testCreate(){	
 		Student firStudent = new Student(firStudentNameString);
@@ -56,9 +57,8 @@ public class StudentTest{
 	}
 	
 	@Test
-	public void testRegularGradingStrategy(){
+	public void testGpaByGradingStrategy() {
 		Student student = new Student("a");
-		student.setGradingStrategy(new RegularGradingStrategy());
 		assertGpa(student, 0.0);
 		student.addGrade(Student.Grade.A);
 		assertGpa(student, 4.0);
@@ -71,23 +71,26 @@ public class StudentTest{
 		student.addGrade(Student.Grade.F);
 		assertGpa(student, 2.0);
 	}
+
 	@Test
-	public void HonorsGradingStrategy(){
+	public void TestGpaByHonorsGradingStrategy(){
 		Student student = new Student("b");
 		student.setGradingStrategy(new HonorsGradingStrategy());
 		assertGpa(student, 0.0);
 		student.addGrade(Student.Grade.A);
-		assertGpa(student, 4.0);;
+		assertGpa(student, 5.0);
 		student.addGrade(Student.Grade.B);
-		assertGpa(student, 3.5);;
+		assertGpa(student, 4.5);
 		student.addGrade(Student.Grade.C);
-		assertGpa(student, 3.0);;
+		assertGpa(student, 4.0);
 		student.addGrade(Student.Grade.D);
-		assertGpa(student, 2.5);;
+		assertGpa(student, 3.5);
 		student.addGrade(Student.Grade.F);
-		assertGpa(student, 2.0);;
+		assertGpa(student, 2.8);
 	}
+	
 	private void assertGpa(Student student, double expectedGpa){
 		assertEquals(expectedGpa, student.getGpa(), GRADE_TOLERANCE);
 	}
+
 }
