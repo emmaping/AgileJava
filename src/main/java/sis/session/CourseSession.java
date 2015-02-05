@@ -16,7 +16,7 @@ import sis.studentinfo.Student;
  * @author Emma_Ping
  *
  */
-public class CourseSession extends Session implements Comparable<CourseSession>{
+public class CourseSession extends Session{
 	
 	
 	/**
@@ -43,6 +43,5 @@ public class CourseSession extends Session implements Comparable<CourseSession>{
 	protected int getSessionLength() {
 		return 6;
 	}
-
 
 }

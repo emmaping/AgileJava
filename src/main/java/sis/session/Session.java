@@ -2,11 +2,12 @@ package sis.session;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import sis.studentinfo.Student;
 
-public abstract class Session {
+public abstract class Session implements Comparable<Session>, Iterable<Student>{
 
 	private String department;
 	private String number;
@@ -44,7 +45,7 @@ public abstract class Session {
 	}
 	
 	
-	public int compareTo(CourseSession that){
+	public int compareTo(Session that){
 		return this.getDepartment().compareTo(that.getDepartment());
 	}
 	/**
@@ -65,5 +66,14 @@ public abstract class Session {
 	public Student get(int index){
 		return allStudents.get(index);
 	}
+	
+	protected List<Student> getAllStudents() {
+		return this.allStudents;
+	}
+	
+	public Iterator<Student> iterator() {
+		return allStudents.iterator();
+	}
+	
 
 }

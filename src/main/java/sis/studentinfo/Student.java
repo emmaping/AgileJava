@@ -2,6 +2,7 @@ package sis.studentinfo;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Spliterator;
 
 public class Student {
 	private String name;
@@ -26,9 +27,14 @@ public class Student {
 		}
 	};
 	
-	public Student(String name){
-		this.name = name ;
+	private String firstName = "";
+	private String lastName = "";
+	private String middleName = "";
+	
+	public Student(String fullName){
+		this.name = fullName ;
 		this.gradingStrategy = new BasicGradingStrategy();
+		SplitName(fullName);
 	}
 	
 	public String getName(){
@@ -75,4 +81,46 @@ public class Student {
 	public void setGradingStrategy(GradingStrategy gradingStrategy){
 		this.gradingStrategy = gradingStrategy;
 	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public String getMiddleName() {
+		return middleName;
+	}
+
+	public void setMiddleName(String middleName) {
+		this.middleName = middleName;
+	}
+	
+	private void SplitName(String fullName) {
+		String[] nameParts = fullName.split(" ");
+		if(nameParts.length == 1){
+			setLastName(nameParts[0]);
+		}
+		else if (nameParts.length == 2) {
+			setFirstName(nameParts[0]);
+			setLastName(nameParts[1]);
+		}
+		else if (nameParts.length == 3) {
+			setFirstName(nameParts[0]);
+			setMiddleName(nameParts[1]);
+			setLastName(nameParts[2]);
+		}
+	}
+	
 }
+

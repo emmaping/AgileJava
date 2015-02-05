@@ -3,6 +3,8 @@ package sis.session;
 import static org.junit.Assert.assertEquals;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -44,6 +46,25 @@ public abstract class SessionTest {
 		assertEquals(2, session.getNumberOfStudents());
 		assertEquals(student1, session.get(0));
 		assertEquals(student2, session.get(1));
+	}
+	
+	@Test
+	public void testIterate(){
+		Student student1 = new Student("Cain Divoe");
+		session.enroll(student1);
+		
+		Student student2 = new Student("Test Monkey");
+		session.enroll(student2);
+		
+		Student student3 = new Student("Dev Donkey");
+		session.enroll(student3);
+		
+		List<Student> resultStudents = new ArrayList<Student>();
+		
+		for(Student student:session){
+			resultStudents.add(student);
+		}
+		assertEquals(resultStudents, session.getAllStudents());
 	}
 	protected abstract Session createSession(String department, String number, LocalDate startData) ;
 

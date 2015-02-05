@@ -10,15 +10,28 @@ import sis.studentinfo.Student;
 public class StudentTest{
 	final String firStudentNameString = "Jane Doe";
 	final String secStudentNameString = "Joe Doe";
+	final String thdStudentNameString = "Emma coco Ping";
 	private static final double GRADE_TOLERANCE = 0.05;
 
 	@Test
 	public void testCreate(){	
 		Student firStudent = new Student(firStudentNameString);
 		assertEquals(firStudentNameString, firStudent.getName());
+		assertEquals("Jane",firStudent.getFirstName());
+		assertEquals("Doe", firStudent.getLastName());
+		assertEquals("", firStudent.getMiddleName());
 		
 		Student secStudent = new Student(secStudentNameString);
 		assertEquals(secStudentNameString, secStudent.getName());
+		assertEquals("Joe", secStudent.getFirstName());
+		assertEquals("Doe", secStudent.getLastName());
+		assertEquals("", secStudent.getMiddleName());
+		
+		Student thdStudent = new Student(thdStudentNameString);
+		assertEquals(thdStudentNameString, thdStudent.getName());
+		assertEquals("Emma", thdStudent.getFirstName());
+		assertEquals("Ping", thdStudent.getLastName());
+		assertEquals("coco", thdStudent.getMiddleName());
 	}
 	@Test
 	public void testSet(){
@@ -88,6 +101,7 @@ public class StudentTest{
 		student.addGrade(Student.Grade.F);
 		assertGpa(student, 2.8);
 	}
+	
 	
 	private void assertGpa(Student student, double expectedGpa){
 		assertEquals(expectedGpa, student.getGpa(), GRADE_TOLERANCE);
