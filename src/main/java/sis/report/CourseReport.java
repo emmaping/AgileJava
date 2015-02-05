@@ -2,6 +2,7 @@ package sis.report;
 
 import java.util.*;
 
+import sis.session.CourseSession;
 import sis.studentinfo.*;
 import static sis.report.ReportConstant.NEWLINE;
 

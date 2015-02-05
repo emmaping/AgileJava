@@ -1,21 +1,21 @@
-package sis.studentinfo;
-import static org.junit.Assert.*;
+package sis.session;
+
+import static org.junit.Assert.assertEquals;
 
 import java.time.LocalDate;
-import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import sis.studentinfo.CourseSession;
 import sis.studentinfo.Student;
 
-
-public class CourseSessionTest {
-	private CourseSession session;
+public abstract class SessionTest {
+	private Session session;
+	LocalDate startDate ;
 	@Before
 	public void setUp() {
-		session = CourseSession.create("ENGL","101");
+		startDate = LocalDate.of(2014, 3, 16);
+		session = createSession("ENGL","101", startDate);
 	}
 
 	@Test
@@ -28,6 +28,7 @@ public class CourseSessionTest {
 	public void testCreateCourseSession(){
 		assertEquals("ENGL", session.getDepartment());
 		assertEquals("101", session.getNumber());
+		assertEquals(startDate, session.getStartDate());
 	}
 	
 	@Test
@@ -44,16 +45,6 @@ public class CourseSessionTest {
 		assertEquals(student1, session.get(0));
 		assertEquals(student2, session.get(1));
 	}
-	
-	@Test
-	public void testCourseDates(){
-		LocalDate startDate = LocalDate.of(2014, 1, 6);
-		
-		CourseSession sessionWithDateCourseSession = new CourseSession("ABCD", "103", startDate);
-		LocalDate endDate = LocalDate.of(2014, 6, 6);
-		assertEquals(endDate, sessionWithDateCourseSession.getEndDate());
-	}
-	
-
+	protected abstract Session createSession(String department, String number, LocalDate startData) ;
 
 }

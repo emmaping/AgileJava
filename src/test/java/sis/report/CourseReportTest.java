@@ -8,7 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import sis.report.RosterReporter;
-import sis.studentinfo.CourseSession;
+import sis.session.CourseSession;
 import sis.studentinfo.Student;
 import static sis.report.ReportConstant.NEWLINE;
 

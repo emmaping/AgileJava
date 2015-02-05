@@ -1,6 +1,6 @@
 package sis.report;
 
-import sis.studentinfo.CourseSession;
+import sis.session.CourseSession;
 import static sis.report.ReportConstant.NEWLINE;
 import sis.studentinfo.Student;
 
