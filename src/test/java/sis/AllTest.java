@@ -21,7 +21,7 @@ import sis.studentinfo.StudentTest;
 	ReportCardTest.class,
 	BasicGradingStrategyTest.class,
 	HonorsGradingStrategyTest.class,
-	SummerCourseSessionTest.class
+	SummerCourseSessionTest.class,
 })
 
 public class AllTest {  

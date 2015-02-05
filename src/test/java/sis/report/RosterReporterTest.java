@@ -2,6 +2,8 @@ package sis.report;
 
 import static org.junit.Assert.*;
 
+import java.time.LocalDate;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -14,7 +16,8 @@ public class RosterReporterTest {
 	private RosterReporter rosterReporter;
 	@Before
 	public void setUp() throws Exception {
-		CourseSession session = CourseSession.create("ENGL","101");
+		LocalDate startDate = LocalDate.of(2014, 9, 20);
+		CourseSession session = CourseSession.createSession("ENGL","101",startDate);
 		session.enroll(new Student("A"));
 		session.enroll(new Student("B"));
 		rosterReporter = new RosterReporter(session);
