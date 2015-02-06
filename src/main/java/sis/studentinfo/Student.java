@@ -3,6 +3,8 @@ package sis.studentinfo;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Spliterator;
+import exceptions.StudentNameFormatException;
+import java.util.logging.*;
 
 public class Student {
 	private String name;
@@ -12,6 +14,9 @@ public class Student {
 	static final String IN_STATE = "OR";
 	private List<Grade> grades = new ArrayList<>();
 	private GradingStrategy gradingStrategy;
+	static final int maxNameParts = 3;
+	static final String TOO_MANY_NAME_PART_MSG = "Student name '%s' contains more than %d parts";
+	static final Logger logger = Logger.getLogger(Student.class.getName());
 	public static enum Grade {
 		A(4),
 		B(3),
@@ -108,6 +113,11 @@ public class Student {
 	
 	private void SplitName(String fullName) {
 		String[] nameParts = fullName.split(" ");
+		if (nameParts.length > maxNameParts){
+			String message = String.format(TOO_MANY_NAME_PART_MSG, fullName, maxNameParts);
+			log(message);
+			throw new StudentNameFormatException(message);
+		}
 		if(nameParts.length == 1){
 			setLastName(nameParts[0]);
 		}
@@ -121,6 +131,9 @@ public class Student {
 			setLastName(nameParts[2]);
 		}
 	}
-	
+	private void log(String message) {
+		
+		logger.info(message);
+	}
 }
 

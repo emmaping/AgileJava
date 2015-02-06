@@ -1,14 +1,18 @@
 package sis.session;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
+import java.net.MalformedURLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.jboss.logging.Cause;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.internal.runners.statements.Fail;
 
+import exceptions.SessionException;
 import sis.studentinfo.Student;
 
 public abstract class SessionTest {
@@ -65,6 +69,26 @@ public abstract class SessionTest {
 			resultStudents.add(student);
 		}
 		assertEquals(resultStudents, session.getAllStudents());
+	}
+	
+	@Test
+	public void testSessionUrl() throws SessionException{
+		final String urlString = "http://www.google.com";
+		session.setUrl(urlString);
+		assertEquals(urlString, session.getUrl().toString());
+	}
+	
+	@Test
+	public void testInvalidSessionUrl(){
+		final String urlString = "httap://www.google.com";
+		try{
+			session.setUrl(urlString);
+			fail("Expected exception due to invalid protocaol in URL");
+		}
+		catch(SessionException e){
+			Throwable cause = e.getCause();
+			assertEquals(MalformedURLException.class, cause.getClass());
+		}
 	}
 	protected abstract Session createSession(String department, String number, LocalDate startData) ;
 

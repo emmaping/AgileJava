@@ -1,8 +1,11 @@
 package sis.studentinfo;
 import static org.junit.Assert.*;
 
+import java.util.logging.Logger;
+
 import org.junit.Test;
 
+import exceptions.StudentNameFormatException;
 import sis.studentinfo.Student;
 
 //import org.junit.Test;
@@ -32,6 +35,19 @@ public class StudentTest{
 		assertEquals("Emma", thdStudent.getFirstName());
 		assertEquals("Ping", thdStudent.getLastName());
 		assertEquals("coco", thdStudent.getMiddleName());
+	}
+	
+	@Test
+	public void testBadlyFormattedName(){
+		TestHandler handler = new TestHandler();
+		Student.logger.addHandler(handler);
+		try {
+			new Student("a b c d");
+			fail("Expected exception from 4 - part name");
+		} catch (StudentNameFormatException e) {
+			assertEquals(String.format(Student.TOO_MANY_NAME_PART_MSG, "a b c d", Student.maxNameParts), e.getMessage());
+			assertTrue(wasLogged(e.getMessage(), handler));
+		}
 	}
 	@Test
 	public void testSet(){
@@ -105,6 +121,10 @@ public class StudentTest{
 	
 	private void assertGpa(Student student, double expectedGpa){
 		assertEquals(expectedGpa, student.getGpa(), GRADE_TOLERANCE);
+	}
+	
+	private boolean wasLogged(String message, TestHandler handler) {
+		return message.equals(handler.getMessage());
 	}
 
 }

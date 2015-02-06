@@ -10,6 +10,7 @@ import sis.session.CourseSessionTest;
 import sis.session.SummerCourseSessionTest;
 import sis.studentinfo.BasicGradingStrategyTest;
 import sis.studentinfo.HonorsGradingStrategyTest;
+import sis.studentinfo.ScoreTest;
 import sis.studentinfo.StudentTest;
 
 @RunWith(Suite.class)
@@ -22,6 +23,7 @@ import sis.studentinfo.StudentTest;
 	BasicGradingStrategyTest.class,
 	HonorsGradingStrategyTest.class,
 	SummerCourseSessionTest.class,
+	ScoreTest.class,
 })
 
 public class AllTest {  

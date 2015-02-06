@@ -1,10 +1,13 @@
 package sis.session;
 
 import java.time.LocalDate;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import exceptions.SessionException;
 import sis.studentinfo.Student;
 
 public abstract class Session implements Comparable<Session>, Iterable<Student>{
@@ -12,6 +15,7 @@ public abstract class Session implements Comparable<Session>, Iterable<Student>{
 	private String department;
 	private String number;
 	private LocalDate startDate;
+	private URL url;
 	private List<Student> allStudents = new ArrayList<>();
 	public final static String ROSTER_REPORT_HEADER = "I am header";
 	public final static String ROSTER_REPORT_FOOTER = "I'm footer";
@@ -74,6 +78,22 @@ public abstract class Session implements Comparable<Session>, Iterable<Student>{
 	public Iterator<Student> iterator() {
 		return allStudents.iterator();
 	}
-	
 
+	public URL getUrl() {
+		return url;
+	}
+
+	public void setUrl(String urlString) throws SessionException{
+		try{
+			this.url = new URL(urlString);
+		}
+		catch (MalformedURLException e){
+			log(e);
+			throw new SessionException(e);
+		}
+	}
+	private void log(Exception e) {
+		e.printStackTrace();
+		
+	}
 }
