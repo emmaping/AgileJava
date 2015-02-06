@@ -9,6 +9,7 @@ import sis.report.RosterReporterTest;
 import sis.session.CourseSessionTest;
 import sis.session.SummerCourseSessionTest;
 import sis.studentinfo.BasicGradingStrategyTest;
+import sis.studentinfo.CourseTest;
 import sis.studentinfo.HonorsGradingStrategyTest;
 import sis.studentinfo.ScoreTest;
 import sis.studentinfo.StudentTest;
@@ -24,6 +25,7 @@ import sis.studentinfo.StudentTest;
 	HonorsGradingStrategyTest.class,
 	SummerCourseSessionTest.class,
 	ScoreTest.class,
+	CourseTest.class,
 })
 
 public class AllTest {  

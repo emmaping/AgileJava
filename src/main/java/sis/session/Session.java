@@ -8,39 +8,34 @@ import java.util.Iterator;
 import java.util.List;
 
 import exceptions.SessionException;
+import sis.studentinfo.Course;
 import sis.studentinfo.Student;
 
 public abstract class Session implements Comparable<Session>, Iterable<Student>{
 
-	private String department;
-	private String number;
+	private Course course;
 	private LocalDate startDate;
 	private URL url;
 	private List<Student> allStudents = new ArrayList<>();
 	public final static String ROSTER_REPORT_HEADER = "I am header";
 	public final static String ROSTER_REPORT_FOOTER = "I'm footer";
 	
-	public Session(String department, String number, LocalDate startDate) {
+	public Session(Course course, LocalDate startDate) {
 		super();
-		this.department = department;
-		this.number = number;
+		this.course = course;
 		this.startDate = startDate;
 	}
 	
 	abstract protected int getSessionLength();
 	
 	public String getDepartment() {
-		return department;
+		return course.getDepartment();
 	}
-	public void setDepartment(String department) {
-		this.department = department;
-	}
+
 	public String getNumber() {
-		return number;
+		return course.getNumber();
 	}
-	public void setNumber(String number) {
-		this.number = number;
-	}
+
 	public LocalDate getStartDate() {
 		return startDate;
 	}

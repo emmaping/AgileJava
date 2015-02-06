@@ -9,6 +9,7 @@ import org.junit.Test;
 
 import sis.report.RosterReporter;
 import sis.session.CourseSession;
+import sis.studentinfo.Course;
 import sis.studentinfo.Student;
 import static sis.report.ReportConstant.NEWLINE;
 
@@ -17,7 +18,7 @@ public class RosterReporterTest {
 	@Before
 	public void setUp() throws Exception {
 		LocalDate startDate = LocalDate.of(2014, 9, 20);
-		CourseSession session = CourseSession.createSession("ENGL","101",startDate);
+		CourseSession session = CourseSession.createSession(new Course("ENGL","101"),startDate);
 		session.enroll(new Student("A"));
 		session.enroll(new Student("B"));
 		rosterReporter = new RosterReporter(session);

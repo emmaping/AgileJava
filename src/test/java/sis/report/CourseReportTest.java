@@ -10,6 +10,7 @@ import org.junit.Test;
 
 import sis.report.RosterReporter;
 import sis.session.CourseSession;
+import sis.studentinfo.Course;
 import sis.studentinfo.Student;
 import static sis.report.ReportConstant.NEWLINE;
 
@@ -18,9 +19,9 @@ public class CourseReportTest {
 	public void testReport(){
 		CourseReport report = new CourseReport();
 		LocalDate startDate = LocalDate.of(2014, 9, 20);
-		report.add(CourseSession.createSession("ENGL", "101",startDate));
-		report.add(CourseSession.createSession("CZEC", "200",startDate));
-		report.add(CourseSession.createSession("ITAL", "410",startDate));
+		report.add(CourseSession.createSession(new Course("ENGL", "101"),startDate));
+		report.add(CourseSession.createSession(new Course("CZEC", "200"),startDate));
+		report.add(CourseSession.createSession(new Course("ITAL", "410"),startDate));
 		assertEquals("CZEC 200" + NEWLINE +
 					"ENGL 101" + NEWLINE +
 					"ITAL 410" +NEWLINE, report.text());

@@ -8,6 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import sis.session.CourseSession;
+import sis.studentinfo.Course;
 import sis.studentinfo.Student;
 
 
@@ -17,15 +18,16 @@ public class CourseSessionTest extends SessionTest {
 	@Test
 	public void testCourseDates(){
 		LocalDate startDate = LocalDate.of(2014, 1, 6);
+		Course course = new Course("ABCD", "103");
 		
-		Session sessionWithDateCourseSession = createSession("ABCD", "103", startDate);
+		Session sessionWithDateCourseSession = createSession(course, startDate);
 		LocalDate endDate = LocalDate.of(2014, 7, 6);
 		assertEquals(endDate, sessionWithDateCourseSession.getEndDate());
 	}
 	
-	protected Session createSession(String department, String number, LocalDate startData) {
+	protected Session createSession(Course course, LocalDate startData) {
 		
-		return CourseSession.createSession(department, number, startData);
+		return CourseSession.createSession(course, startData);
 	}
 
 }

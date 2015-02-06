@@ -13,6 +13,7 @@ import org.junit.Test;
 import org.junit.internal.runners.statements.Fail;
 
 import exceptions.SessionException;
+import sis.studentinfo.Course;
 import sis.studentinfo.Student;
 
 public abstract class SessionTest {
@@ -21,7 +22,8 @@ public abstract class SessionTest {
 	@Before
 	public void setUp() {
 		startDate = LocalDate.of(2014, 3, 16);
-		session = createSession("ENGL","101", startDate);
+		Course course = new Course("ENGL","101");
+		session = createSession(course, startDate);
 	}
 
 	@Test
@@ -90,6 +92,6 @@ public abstract class SessionTest {
 			assertEquals(MalformedURLException.class, cause.getClass());
 		}
 	}
-	protected abstract Session createSession(String department, String number, LocalDate startData) ;
+	protected abstract Session createSession(Course course, LocalDate startData) ;
 
 }

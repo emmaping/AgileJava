@@ -8,6 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import sis.session.SummerCourseSession;
+import sis.studentinfo.Course;
 
 public class SummerCourseSessionTest extends SessionTest{
 
@@ -16,14 +17,14 @@ public class SummerCourseSessionTest extends SessionTest{
 	public void testgetEndDate(){
 		LocalDate startDate = LocalDate.of(2014, 1, 16);
 		
-		Session sessionWithDateCourseSession = createSession("ABCD", "103", startDate);
+		Session sessionWithDateCourseSession = createSession(new Course("ABCD", "103"), startDate);
 		LocalDate endDate = LocalDate.of(2014, 3, 16);
 		assertEquals(endDate, sessionWithDateCourseSession.getEndDate());
 		assertEquals("ABCD", sessionWithDateCourseSession.getDepartment());
 	}
-	protected Session createSession(String department, String number, LocalDate startData) {
+	protected Session createSession(Course course, LocalDate startData) {
 		
-		return SummerCourseSession.createSession(department, number, startData);
+		return SummerCourseSession.createSession(course, startData);
 	}
 
 }

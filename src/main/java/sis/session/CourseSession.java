@@ -7,6 +7,7 @@ import java.util.function.IntToLongFunction;
 
 import org.omg.CORBA.PUBLIC_MEMBER;
 
+import sis.studentinfo.Course;
 import sis.studentinfo.Student;
 
 
@@ -25,17 +26,13 @@ public class CourseSession extends Session{
 	 * @param number
 	 * @param startDate the date on which the CourseSession begins
 	 */
-	public CourseSession(String department, String number, LocalDate startDate) {
-		super(department, number, startDate);
+	public CourseSession(Course course, LocalDate startDate) {
+		super(course, startDate);
 	}
 	
-	private CourseSession createCourseSession(){
-		LocalDate startDate = LocalDate.of(2014, 1, 1);
-		return CourseSession.createSession("ENGL", "101", startDate);
-	}
-	
-	public static CourseSession createSession(String department, String number, LocalDate startDate){
-		return new CourseSession(department, number, startDate);
+	public static CourseSession createSession(Course course, LocalDate startDate){
+		
+		return new CourseSession(course, startDate);
 		
 	}
 	
