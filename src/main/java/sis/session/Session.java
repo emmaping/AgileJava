@@ -1,24 +1,29 @@
 package sis.session;
 
 import java.time.LocalDate;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import antlr.JavaCodeGeneratorPrintWriterManager;
 import exceptions.SessionException;
 import sis.studentinfo.Course;
 import sis.studentinfo.Student;
 
-public abstract class Session implements Comparable<Session>, Iterable<Student>{
+public abstract class Session implements Comparable<Session>, Iterable<Student>, java.io.Serializable{
 
 	private Course course;
 	private LocalDate startDate;
 	private URL url;
-	private List<Student> allStudents = new ArrayList<>();
-	public final static String ROSTER_REPORT_HEADER = "I am header";
-	public final static String ROSTER_REPORT_FOOTER = "I'm footer";
+	private int numberOfCredit;
+	private transient List<Student> allStudents = new ArrayList<>();
+	public final static String ROSTER_REPORT_HEADER = "Student %n - %n";
+	public final static String ROSTER_REPORT_FOOTER = "%n# students = %d%n";
 	
 	public Session(Course course, LocalDate startDate) {
 		super();
@@ -34,6 +39,15 @@ public abstract class Session implements Comparable<Session>, Iterable<Student>{
 
 	public String getNumber() {
 		return course.getNumber();
+	}
+
+	
+	public int getNumberOfCredit() {
+		return numberOfCredit;
+	}
+
+	public void setNumberOfCredit(int numberOfCredit) {
+		this.numberOfCredit = numberOfCredit;
 	}
 
 	public LocalDate getStartDate() {
@@ -91,4 +105,23 @@ public abstract class Session implements Comparable<Session>, Iterable<Student>{
 		e.printStackTrace();
 		
 	}
+	
+	private void writeObject(ObjectOutputStream outputStream) throws IOException{
+		outputStream.defaultWriteObject();
+		outputStream.writeInt(allStudents.size());
+		for(Student student: allStudents){
+			outputStream.writeObject(student.getLastName());;
+		}
+	}
+	
+	private void readObject(ObjectInputStream inputStream) throws IOException, ClassNotFoundException{
+		inputStream.defaultReadObject();
+		allStudents = new ArrayList<Student>();
+		int size = inputStream.readInt();
+		for(int i=0; i< size; i++){
+			String lastName = (String)inputStream.readObject();
+			allStudents.add(Student.findByLastName(lastName));
+		}
+	}
+	
 }

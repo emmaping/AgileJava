@@ -3,6 +3,8 @@ package sis;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
+import sis.db.DataFileTest;
+import sis.db.KeyFileTest;
 import sis.report.CourseReportTest;
 import sis.report.ReportCardTest;
 import sis.report.RosterReporterTest;
@@ -10,10 +12,14 @@ import sis.session.CourseSessionTest;
 import sis.session.SummerCourseSessionTest;
 import sis.studentinfo.AccountTest;
 import sis.studentinfo.BasicGradingStrategyTest;
+import sis.studentinfo.CourseCatalogTest;
 import sis.studentinfo.CourseTest;
 import sis.studentinfo.HonorsGradingStrategyTest;
 import sis.studentinfo.ScoreTest;
+import sis.studentinfo.StudentDirectoryTest;
 import sis.studentinfo.StudentTest;
+import sis.ui.StudentUITest;
+import sis.util.IOUtilTest;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
@@ -28,6 +34,12 @@ import sis.studentinfo.StudentTest;
 	ScoreTest.class,
 	CourseTest.class,
 	AccountTest.class,
+	StudentUITest.class,
+	CourseCatalogTest.class,
+	StudentDirectoryTest.class,
+	DataFileTest.class,
+	KeyFileTest.class,
+	IOUtilTest.class,
 })
 
 public class AllTest {  
