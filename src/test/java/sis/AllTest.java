@@ -23,24 +23,24 @@ import sis.util.IOUtilTest;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-	StudentTest.class,
-	CourseSessionTest.class,
-	RosterReporterTest.class,
-	CourseReportTest.class,
-	ReportCardTest.class,
-	BasicGradingStrategyTest.class,
-	HonorsGradingStrategyTest.class,
-	SummerCourseSessionTest.class,
-	ScoreTest.class,
-	CourseTest.class,
-	AccountTest.class,
-	StudentUITest.class,
-	CourseCatalogTest.class,
-	StudentDirectoryTest.class,
-	DataFileTest.class,
-	KeyFileTest.class,
-	IOUtilTest.class,
+  StudentTest.class,
+  CourseSessionTest.class,
+  RosterReporterTest.class,
+  CourseReportTest.class,
+  ReportCardTest.class,
+  BasicGradingStrategyTest.class,
+  HonorsGradingStrategyTest.class,
+  SummerCourseSessionTest.class,
+  ScoreTest.class,
+  CourseTest.class,
+  AccountTest.class,
+  StudentUITest.class,
+  CourseCatalogTest.class,
+  StudentDirectoryTest.class,
+  DataFileTest.class,
+  KeyFileTest.class,
+  IOUtilTest.class,
 })
-
-public class AllTest {  
+public class AllTest
+{
 }
