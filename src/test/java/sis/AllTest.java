@@ -23,6 +23,7 @@ import sis.studentinfo.StudentTest;
 import sis.ui.StudentUITest;
 import sis.util.IOUtilTest;
 import sis.util.LineWriterTest;
+import sis.util.MutliHashMapTest;
 import sis.util.StringUtilTtest;
 
 @RunWith(Suite.class)
@@ -48,6 +49,7 @@ import sis.util.StringUtilTtest;
   SearchTest.class,
   ServerTest.class,
   LineWriterTest.class,
+  MutliHashMapTest.class,
 })
 public class AllTest
 {
