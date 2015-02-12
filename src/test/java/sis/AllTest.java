@@ -8,6 +8,8 @@ import sis.db.KeyFileTest;
 import sis.report.CourseReportTest;
 import sis.report.ReportCardTest;
 import sis.report.RosterReporterTest;
+import sis.search.SearchTest;
+import sis.search.ServerTest;
 import sis.session.CourseSessionTest;
 import sis.session.SummerCourseSessionTest;
 import sis.studentinfo.AccountTest;
@@ -20,6 +22,8 @@ import sis.studentinfo.StudentDirectoryTest;
 import sis.studentinfo.StudentTest;
 import sis.ui.StudentUITest;
 import sis.util.IOUtilTest;
+import sis.util.LineWriterTest;
+import sis.util.StringUtilTtest;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
@@ -40,6 +44,10 @@ import sis.util.IOUtilTest;
   DataFileTest.class,
   KeyFileTest.class,
   IOUtilTest.class,
+  StringUtilTtest.class,
+  SearchTest.class,
+  ServerTest.class,
+  LineWriterTest.class,
 })
 public class AllTest
 {

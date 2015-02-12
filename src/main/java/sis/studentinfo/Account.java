@@ -104,4 +104,19 @@ public class Account implements Accountable
     this.ach = ach;
   }
 
+  public synchronized void withdraw(BigDecimal amount)
+  {
+    if (amount.compareTo(balance) > 0)
+      return;
+    try
+    {
+      Thread.sleep(100);
+    }
+    catch (InterruptedException e)
+    {
+      // TODO: handle exception
+    }
+    balance = balance.subtract(amount);
+  }
+
 }
